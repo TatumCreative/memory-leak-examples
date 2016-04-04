@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Bug Functions</title>
+  </head>
+  <body>
+
+  </body>
+  <script>
+    // Some random function
+    function createUpdateLoop1 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop2 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop3 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop4 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop5 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop6 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop7 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop8 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop9 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+    function createUpdateLoop10 (window, container, dragZoom) {
+      let isLooping = false;
+
+      function update () {
+        let scrollChanging = Math.abs(dragZoom.smoothZoom - dragZoom.zoom) > ZOOM_EPSILON;
+        let translateChanging = (
+          Math.abs(dragZoom.smoothTranslateX - dragZoom.translateX) > TRANSLATE_EPSILON ||
+          Math.abs(dragZoom.smoothTranslateY - dragZoom.translateY) > TRANSLATE_EPSILON
+        );
+
+        isLooping = scrollChanging || translateChanging;
+
+        if(scrollChanging) {
+          dragZoom.smoothZoom = lerp(dragZoom.smoothZoom, dragZoom.zoom, LERP_SPEED);
+        } else {
+          dragZoom.smoothZoom = dragZoom.zoom;
+        }
+
+        if(translateChanging) {
+          dragZoom.smoothTranslateX = lerp(dragZoom.smoothTranslateX, dragZoom.translateX, LERP_SPEED);
+          dragZoom.smoothTranslateY = lerp(dragZoom.smoothTranslateY, dragZoom.translateY, LERP_SPEED);
+        } else {
+          dragZoom.smoothTranslateX = dragZoom.translateX;
+          dragZoom.smoothTranslateY = dragZoom.translateY;
+        }
+
+        let zoom = 1 + dragZoom.smoothZoom;
+        container.style.transform = `translate(${dragZoom.smoothTranslateX}px, ${dragZoom.smoothTranslateY}px) scale(${zoom})`;
+
+        if(isLooping) {
+          window.requestAnimationFrame(update)
+        }
+      }
+
+      return function restartLoopingIfStopped () {
+        if(!isLooping) {
+          update();
+        }
+      }
+    }
+  </script>
+</html>

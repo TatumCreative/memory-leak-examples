@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Memory Bug Float32Array</title>
+  </head>
+  <body>
+
+  </body>
+  <script>
+    // Fill an array with values
+    var size = 100000
+    var array = new Float32Array(size)
+    for(var i=0; i < size; i++) {
+      array[i] = i
+    }
+  </script>
+</html>
